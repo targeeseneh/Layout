@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS Flex-Box</title>
+
+	<style type="text/css">
+		
+		body{
+			background-color: black;
+		}
+
+		#container{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			padding: 20px;
+			margin-top: 20px;
+			
+		}
+
+		.header{
+			margin-top: 20px;
+		}
+
+		.header a{
+			margin-top: 23px;
+			margin-left: 23px;
+			color: aqua;
+			font-size: 20px;
+			text-decoration: none;
+			font-family: monospace;
+		}
+
+		p{
+			
+			margin: 10px;
+		}
+
+		h3{
+			font-size: 22px;
+			font-weight: bolder;
+			margin-left: 16px;
+			color: red;
+		}
+
+		h1{
+			font-size: 43px;
+			font-weight: bolder;
+			font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+			text-align: center;
+			color: white;
+		}
+
+		.first p{
+			font-size: 20px;
+			font-weight: bold;
+			padding: 10px;
+			color: white;
+		}
+
+		.second p{
+			font-size: 20px;
+			font-weight: bold;
+			padding: 10px;
+			color: white;
+		}
+
+		.third p{
+			font-size: 20px;
+			font-weight: bold;
+			padding: 10px;
+			color: white;
+		}
+
+		.forth p{
+			font-size: 20px;
+			font-weight: bold;
+			padding: 10px;
+			color: white;
+		}
+
+		.first a{
+			color: aqua;
+			text-decoration: none;
+		}
+
+		.third a{
+			color: aqua;
+			text-decoration: none;
+		}
+
+		.first li{
+			color: white;
+		}
+
+		.second li{
+			color: white;
+		}
+
+		.third li{
+			color: white;
+		}
+
+		.forth li{
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<nav>
+			<a href="index.html">CSS Layout</a>
+		</nav>
+	</header>
+	<div id="container">
+		<h1>CSS Flexbox</h1>
+		<div class="first">
+			<h3>What is flexbox?</h3>
+			<p>
+				Flexbox is a layout mechanism designed for laying out groups of items in one dimension.Flexbox is a layout mechanism designed for laying out groups of items in one dimension.It excels at taking a bunch of items which have different sizes, and returning the best layout for those items.
+			</p>
+			<h3>What can you do with a flex layout?</h3>
+			<p>
+				Flex layouts have the following features: <ul>
+					<li>They can display as a row, or a column.</li>
+					<li>They respect the writing mode of the document.</li>
+					<li>They are single line by default, but can be asked to wrap onto multiple lines.</li>
+					<li>Items in the layout can be visually reordered, away from their order in the DOM.</li>
+					<li>Space can be distributed inside the items, so they become bigger and smaller according to the space available in their parent.</li>
+					<li>Space can be distributed around the items and flex lines in a wrapped layout, using the Box Alignment properties.</li>
+					<li>The items themselves can be aligned on the cross axis.</li>
+				</ul>
+			</p>
+			<h3>The main axis and the cross axis</h3>
+			<p>
+				The key to understanding flexbox is to understand the concept of a main axis and a cross axis. The main axis is the one set by your flex-direction property. If that is row your main axis is along the row, if it is column your main axis is along the column. <br> Flex items move as a group on the main axis. Remember: we've got a bunch of things and we are trying to get the best layout for them as a group.The cross axis runs in the other direction to the main axis, so if flex-direction is row the cross axis runs along the column.
+			</p>
+		</div>
+		<div class="second">
+			<h3>Creating a flex container</h3>
+			<p>
+				To use flexbox you need to declare that you want to use a flex formatting context and not regular block and inline layout. Do this by changing the value of the display property to flex.
+			</p>
+			<h3>Initial Values</h3>
+			<p>
+				All CSS properties have initial values which control how they behave "out of the box" when you haven't applied any CSS to change that initial behavior. The children of our flex container become flex items as soon as their parent gets display: flex, so these initial values mean that we start seeing some flexbox behavior.
+				Intial value means that: <ul>
+					<li>Items display as a row.</li>
+					<li>They do not wrap.
+					</li>
+					<li>They do not grow to fill the container.</li>
+					<li>They line up at the start of the container.
+					</li>
+				</ul>
+			</p>
+			<h3>Controlling the direction of items</h3>
+			<p>
+				Even though you haven't added a flex-direction property yet, the items display as a row because the initial value of flex-direction is row. If you want a row then you don't need to add the property. To change the direction, add the property and one of the four values: <ul>
+					<li>row: the items lay out as a row.</li>
+					<li>row-reverse: the items lay out as a row from the end of the flex container.</li>
+					<li>column: the items lay out as a column.</li>
+					<li>column-reverse : the items lay out as a column from the end of the flex container.</li>
+				</ul>
+			</p>
+			<h3>Wrapping flex items</h3>
+			<p>
+				The initial value of the flex-wrap property is nowrap. This means that if there is not enough space in the container the items will overflow.Items displaying using the initial values will shrink as small as they can, down to the min-content size before overflow happens. <br>
+				When a flex container wraps it creates multiple flex lines. In terms of space distribution, each line acts like a new flex container. Therefore if you are wrapping rows, it is not possible to get something in row 2 to line up with something above it in row 1. This is what is meant by flexbox being one-dimensional. You can control alignment in one axis, a row or a column, not both together as we can do in grid.
+			</p>
+		</div>
+		<div class="third">
+			<h3>Controlling space inside flex items</h3>
+			<p>
+				Assuming our container has more space than is needed to display the items, the items line up at the start and do not grow to fill the space. They stop growing at their max-content size. This is because the initial value of the flex- properties is: <ul>
+					<li>flex-grow: 0: items do not grow.</li>
+					<li>flex-shrink: 1: items can shrink smaller than their <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis">flex-basis</a>.</li>
+					<li>flex-basis: auto: items have a base size of auto.</li>
+				</ul>
+			</p>
+			<p>
+				This can be represented by a keyword value of flex: initial. The flex shorthand property, or the longhands of flex-grow, flex-shrink and flex-basis are applied to the children of the flex container.To cause the items to grow, while allowing large items to have more space than small ones use flex:auto. You can try this using the demo above. This sets the properties to: <ul>
+					<li>flex-grow: 1: items can grow larger than their flex-basis.</li>
+					<li>flex-shrink: 1: items can shrink smaller than their flex-basis.</li>
+					<li>flex-basis: auto: items have a base size of auto.</li>
+				</ul>
+			</p>
+			<p>
+				Using flex: auto will mean that items end up different sizes, as the space that is shared between the items is shared out after each item is laid out as max-content size. So a large item will gain more space. This unpacks to: <ul>
+					<li>flex-grow: 1: items can grow larger than their flex-basis.</li>
+					<li>flex-shrink: 1: items can shrink smaller than their flex-basis.</li>
+					<li>flex-basis: 0: items have a base size of 0.</li>
+				</ul>
+				Using flex: 1 says that all items have zero size, therefore all of the space in the flex container is available to be distributed. As all items have a flex-grow factor of 1 they all grow equally and the space is shared equally.
+			</p>
+			<h3>Reordering flex items</h3>
+			<p>
+				Items in your flex container can be reordered using the order property. This property allows the ordering of items in ordinal groups. Items are laid out in the direction dictated by flex-direction, lowest values first. If more than one item has the same value it will be displayed with the other items with that value.
+			</p>
+		</div>
+		<div class="forth">
+			<h3>Reordering flex items</h3>
+			<p>
+				Items in your flex container can be reordered using the order property. This property allows the ordering of items in ordinal groups. Items are laid out in the direction dictated by flex-direction, lowest values first. If more than one item has the same value it will be displayed with the other items with that value.
+			</p>
+			<h3>Flexbox alignment overview</h3>
+			<p>
+				Flexbox brought with it a set of properties for aligning items and distributing space between items. These properties were so useful they have since been moved into their own specification, you'll encounter them in Grid Layout too. Here you can find out how they work when you are using flexbox.The set of properties can be placed into two groups. Properties for space distribution, and properties for alignment. The properties which distribute space are: <ul>
+					<li>justify-content: space distribution on the main axis.</li>
+					<li>align-content: space distribution on the cross axis.</li>
+					<li>place-content: a shorthand for setting both of the above properties.</li>
+				</ul>
+			</p>
+			<p>
+				The properties used for alignment in flexbox: <ul>
+						<li>align-self: aligns a single item on the cross axis.</li>
+						<li>align-self: aligns a single item on the cross axis.</li>
+				    </ul>
+				 If you are working on the main axis then the properties begin with justify-. On the cross axis they begin with align-.
+			</p>
+			<h3>Distributing space on the main axis </h3>
+			<p>
+				With the HTML used earlier, the flex items laid out as a row, there is space on the main axis. The items are not big enough to completely fill the flex container. The items line up at the start of the flex container because the initial value of justify-content is flex-start. The items line up at the start and any extra space is at the end
+			</p>
+			<h3>With flex-direction: column</h3>
+			<p>
+				If you have changed your flex-direction to column then justify-content will work on the column. To have spare space in your container when working as a column you need to give your container a height or block-size. Otherwise you won't have spare space to distribute.
+			</p>
+			<h3>Distributing space between flex lines</h3>
+			<p>
+				With a wrapped flex container you might have space to distribute on the cross axis. In this case you can use the align-content property with the same values as justify-content. Unlike justify-content which aligns items to flex-start by default, the initial value of align-content is stretch. 
+			</p>
+			<h3>The place-content shorthand</h3>
+			<p>
+				To set both justify-content and align-content you can use place-content with one or two values. A single value will be used for both axes, if you specify both the first is used for align-content and the second for justify-content.
+			</p>
+			<h3>Aligning items on the cross-axis</h3>
+			<p>
+				On the cross axis you can also align your items within the flex line using align-items and align-self. The space available for this alignment will depend on the height of the flex container, or flex line in the case of a wrapped set of items.The initial value of align-self is stretch, which is why flex items in a row stretch to the height of the tallest item by default. To change this, add the align-self property to any of your flex items. <br>
+				The align-self property is applied to individual items. The align-items property can be applied to the flex container to set all of the individual align-self properties as a group.
+			</p>
+			<h3>Why is there no justify-self in flexbox?</h3>
+			<p>
+				Flex items act as a group on the main axis. So there is no concept of splitting an individual item out of that group.In grid layout the justify-self and justify-items properties work on the inline axis to do alignment of items on that axis within their grid area. Due to the way that flex layouts treat items as a group, these properties are not implemented in a flex context.
+			</p>
+			<h3>How to center an item vertically and horizontally</h3>
+			<p>The alignment properties can be used to center an item inside another box. The justify-content property aligns the item on the main axis, which is row. The align-items property on the cross axis.</p>
+		</div>
+	</div>
+</body>
+</html>
